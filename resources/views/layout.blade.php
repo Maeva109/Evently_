@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Grand - Event and Conference Template</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}" >
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/fonts/line-icons.css')}}">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slicknav.css')}}">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/nivo-lightbox.css')}}" >
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/main.css')}}">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
+
+  </head>
+  <body>
+    @include('includes.header');
+
+    @yield('content')
+
+    @include('includes.footer');
