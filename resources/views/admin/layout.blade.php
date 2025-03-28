@@ -39,9 +39,49 @@
         media="all" />
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/style.css')}}">
+    <!-- Toastr CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+
+<!-- jQuery (nécessaire pour toastr) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </head>
 
 <body>
+    <script>
+        $(document).ready(function(){
+          toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "5000",         // Durée d'affichage : 5 secondes
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+          };
+      
+          @if(session('success'))
+            toastr.success("{{ session('success') }}");
+          @endif
+      
+          @if(session('error'))
+            toastr.error("{{ session('error') }}");
+          @endif
+      
+          @if(session('info'))
+            toastr.info("{{ session('info') }}");
+          @endif
+      
+          @if(session('warning'))
+            toastr.warning("{{ session('warning') }}");
+          @endif
+        });
+      </script>
+      
 
     <div class="theme-loader">
         <div class="loader-track">
