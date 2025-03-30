@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Event and Conference </title>
+    <title> {{ config('app.name') }} | @yield('title') </title>
     <!-- Toastr CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
@@ -35,11 +35,12 @@
 <body>
 
 
-    @include('includes.header');
+    @include('includes.header')
 
     @yield('content')
+    @include('includes.contact')
 
-    @include('includes.footer');
+    @include('includes.footer')
     <script>
         $(document).ready(function() {
             toastr.options = {
@@ -52,7 +53,7 @@
                 "hideEasing": "linear",
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
-            };
+            }
 
             @if (session('success'))
                 toastr.success("{{ session('success') }}");

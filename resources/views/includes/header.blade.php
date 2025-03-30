@@ -11,7 +11,7 @@
               <span class="icon-menu"></span>
               <span class="icon-menu"></span>
             </button>
-            <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a>
+            <a href="/" class="navbar-brand"><img src="assets/img/logo.png" alt=""></a>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end">
@@ -31,11 +31,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#team">
-                  Speakers
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#gallery">
                   Gallery
                 </a>
@@ -51,15 +46,26 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#pricing">
-                  pricing
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#google-map-area">
                   Contact
                 </a>
               </li>
+              @auth
+              <li class="nav-item">
+              <p> {{ auth()->user()->name }} </p>
+            </li>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Se Deconnecter</a>
+            </li>
+                @else
+              
+              <li class="nav-item">
+                <a href="/signin" class="nav-link fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Se connecter</a>
+              </li>
+              <li class="nav-item">
+                <a href="/signup" class="nav-link fadeInUp btn btn-border btn-lg" data-wow-delay=".8s">S'inscrire</a>
+              </li>
+              @endauth
             </ul>
           </div>
         </div>
@@ -100,5 +106,7 @@
       <!-- Navbar End -->
 
       <!-- Main Carousel Section Start -->
-      
+        <!-- Main Carousel Section End -->
+
+</header>
      

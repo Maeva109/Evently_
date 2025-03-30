@@ -1,4 +1,5 @@
 @extends('layout')
+@section('title','Sign')
 
 @section('content')
   <!-- Main Carousel Section End -->

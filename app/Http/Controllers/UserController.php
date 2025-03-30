@@ -30,7 +30,6 @@ class UserController extends Controller
             return redirect('/admin')->with('success', "Connexion réussie");
         } elseif(Auth::user()->role === 'admin'){
             return redirect('/admin')->with('success', "Connexion réussie");
-
         }else {
             // Pour les autres rôles, rediriger vers la page d'accueil par défaut
             return redirect('/')->with('success', "Connexion réussie");

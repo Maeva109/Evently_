@@ -99,3 +99,4 @@
     <script src="{{asset('assets/js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('assets/js/nivo-lightbox.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
+  </footer>

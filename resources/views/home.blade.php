@@ -1,5 +1,5 @@
 @extends('layout')
-
+@section('title','Home')
 @section('content')
 <div id="main-slide" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -43,9 +43,7 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-  <!-- Main Carousel Section End -->
 
-</header>
 <!-- Header Area wrapper End -->
    <!-- Coundown Section Start -->
 
