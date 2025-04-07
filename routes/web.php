@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [HomeController::class,'home'])->middleware('guest')->name('home');
+Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/signup',[UserController::class,'signin']);
 Route::get('/signin',[UserController::class,'signup'])->middleware('guest')->name('signin');
 Route::post('/login',[UserController::class,'login'])->middleware('guest');
