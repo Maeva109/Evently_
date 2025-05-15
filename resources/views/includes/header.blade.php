@@ -26,8 +26,8 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#schedules">
-                  schedules
+                <a class="nav-link" href="{{ route('events.schedules') }}">
+                  Schedules
                 </a>
               </li>
               <li class="nav-item">
@@ -79,7 +79,7 @@
             <a class="page-scrool" href="#about">About</a>
           </li>
           <li>
-             <a class="page-scroll" href="#schedules">schedules</a>
+             <a class="page-scroll" href="{{ route('events.schedules') }}">Schedules</a>
           </li>
           <li>
             <a class="page-scroll" href="#team">Speakers</a>

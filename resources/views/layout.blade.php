@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title> {{ config('app.name') }} | @yield('title') </title>
     <!-- Toastr CSS -->
@@ -30,6 +31,52 @@
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
+    <!-- Custom Navigation Styles -->
+    <style>
+        .navbar-nav .nav-link {
+            color: #E91E63 !important; /* Rose vif */
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #C2185B !important; /* Rose plus foncé au survol */
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-item.active .nav-link {
+            color: #AD1457 !important; /* Rose encore plus foncé pour le lien actif */
+            font-weight: 600;
+        }
+
+        .btn-border {
+            border-color: #E91E63 !important;
+            color: #E91E63 !important;
+        }
+
+        .btn-border:hover {
+            background-color: #E91E63 !important;
+            color: white !important;
+        }
+
+        /* Style pour le nom de l'utilisateur */
+        .navbar-nav .nav-item p {
+            color: #E91E63;
+            margin: 0;
+            padding: 8px 15px;
+            font-weight: 500;
+        }
+
+        /* Style pour la navigation mobile */
+        .mobile-menu a {
+            color: #E91E63 !important;
+        }
+
+        .mobile-menu a:hover {
+            color: #C2185B !important;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -53,23 +100,25 @@
                 "hideEasing": "linear",
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
-            }
+            };
 
-            @if (session('success'))
-                toastr.success("{{ session('success') }}");
-            @endif
+            // @if (session('success'))
+            //     toastr.success("{{ session('success') }}");
+            // @endif
 
-            @if (session('error'))
-                toastr.error("{{ session('error') }}");
-            @endif
+            // @if (session('error'))
+            //     toastr.error("{{ session('error') }}");
+            // @endif
 
-            @if (session('info'))
-                toastr.info("{{ session('info') }}");
-            @endif
+            // @if (session('info'))
+            //     toastr.info("{{ session('info') }}");
+            // @endif
 
-            @if (session('warning'))
-                toastr.warning("{{ session('warning') }}");
-            @endif
-        })
+            // @if (session('warning'))
+            //     toastr.warning("{{ session('warning') }}");
+            // @endif
+         });
     </script>
 </body>
+
+</html>

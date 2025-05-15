@@ -9,28 +9,28 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="assets/img/slider/slide1.jpg" alt="First slide">
+      <img class="d-block w-100" src="assets/img/slider/slide1.jpg" alt="Featured Events">
       <div class="carousel-caption d-md-block">
-        <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-        <h1 class="wow fadeInDown heading" data-wow-delay=".4s">Design Thinking Conference</h1>
-        <a href="#" class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Get Ticket</a>
-        <a href="#" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Explore More</a>
+        <p class="fadeInUp wow" data-wow-delay=".6s">Discover Amazing Events Near You</p>
+        <h1 class="wow fadeInDown heading" data-wow-delay=".4s">Find Your Next Experience</h1>
+        <a href="{{ route('events.index') }}" class="fadeInLeft wow btn btn-common btn-lg" data-wow-delay=".6s">Browse Events</a>
+        <a href="{{ route('events.create') }}" class="fadeInRight wow btn btn-border btn-lg" data-wow-delay=".6s">Create Event</a>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="assets/img/slider/slide2.jpg" alt="Second slide">
+      <img class="d-block w-100" src="assets/img/slider/slide2.jpg" alt="Event Organizers">
       <div class="carousel-caption d-md-block">
-        <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-        <h1 class="wow bounceIn heading" data-wow-delay=".7s">22 Amazing Speakers</h1>
-        <a href="#" class="fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Learn More</a>
+        <p class="fadeInUp wow" data-wow-delay=".6s">Join Our Community of Event Organizers</p>
+        <h1 class="wow bounceIn heading" data-wow-delay=".7s">Create Memorable Events</h1>
+        <a href="{{ route('organizer.register') }}" class="fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Become an Organizer</a>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="assets/img/slider/slide3.jpg" alt="Third slide">
+      <img class="d-block w-100" src="assets/img/slider/slide3.jpg" alt="Event Tickets">
       <div class="carousel-caption d-md-block">
-        <p class="fadeInUp wow" data-wow-delay=".6s">Global Grand Event on Digital Design</p>
-        <h1 class="wow fadeInUp heading" data-wow-delay=".6s">Book Your Seat Now!</h1>
-        <a href="#" class="fadeInUp wow btn btn-common btn-lg" data-wow-delay=".8s">Explore</a>
+        <p class="fadeInUp wow" data-wow-delay=".6s">Don't Miss Out on Amazing Events</p>
+        <h1 class="wow fadeInUp heading" data-wow-delay=".6s">Book Your Tickets Now!</h1>
+        <a href="{{ route('events.featured') }}" class="fadeInUp wow btn btn-common btn-lg" data-wow-delay=".8s">Featured Events</a>
       </div>
     </div>
   </div>
@@ -44,27 +44,27 @@
   </a>
 </div>
 
-<!-- Header Area wrapper End -->
-   <!-- Coundown Section Start -->
-
+<!-- Countdown Section Start -->
    <section class="countdown-timer section-padding">
       <div class="container">
         <div class="row text-center">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="heading-count">
-              <h2 class="wow fadeInDown" data-wow-delay="0.2s">Event Will Start In</h2>
+          <h2 class="wow fadeInDown" data-wow-delay="0.2s">Next Featured Event Starts In</h2>
             </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="row time-countdown justify-content-center wow fadeInUp" data-wow-delay="0.2s">
-              <div id="clock" class="time-count"></div>
+          <div id="clock" class="time-count" data-event-date="{{ $nextFeaturedEvent->start_date ?? '' }}"></div>
             </div>
-            <a href="pricing.html" class="btn btn-common wow fadeInUp" data-wow-delay="0.3s">Add to My Calender</a>
+        @if($nextFeaturedEvent)
+        <a href="{{ route('events.show', $nextFeaturedEvent->id) }}" class="btn btn-common wow fadeInUp" data-wow-delay="0.3s">View Event Details</a>
+        @endif
           </div>
         </div>
       </div>
     </section>
-    <!-- Coundown Section End -->
+<!-- Countdown Section End -->
 
      <!-- Services Section Start -->
     <section id="services" class="services section-padding">
@@ -72,8 +72,8 @@
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Why You Choose Us?</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Why Choose Our Platform?</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">The Best Place to Find and Create Events</p>
             </div>
           </div>
         </div>
@@ -82,11 +82,11 @@
           <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
             <div class="services-item wow fadeInDown" data-wow-delay="0.2s">
               <div class="icon">
-                <i class="lni-heart"></i>
+            <i class="lni-search"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Get Inspired</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+            <h3><a href="#">Easy Event Discovery</a></h3>
+            <p>Find events that match your interests with our smart search and filtering system.</p>
               </div>
             </div>
           </div>
@@ -94,11 +94,11 @@
           <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
             <div class="services-item wow fadeInDown" data-wow-delay="0.4s">
               <div class="icon">
-                <i class="lni-gallery"></i>
+            <i class="lni-ticket"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Meet New Faces</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+            <h3><a href="#">Simple Booking Process</a></h3>
+            <p>Book tickets and register for events with just a few clicks.</p>
               </div>
             </div>
           </div>
@@ -106,11 +106,11 @@
           <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
             <div class="services-item wow fadeInDown" data-wow-delay="0.6s">
               <div class="icon">
-                <i class="lni-envelope"></i>
+            <i class="lni-calendar"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Fresh Tech Insights</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+            <h3><a href="#">Event Management</a></h3>
+            <p>Create and manage your events with our comprehensive tools and features.</p>
               </div>
             </div>
           </div>
@@ -118,11 +118,11 @@
           <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
             <div class="services-item wow fadeInDown" data-wow-delay="0.8s">
               <div class="icon">
-                <i class="lni-cup"></i>
+            <i class="lni-users"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Networking Session</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+            <h3><a href="#">Community Building</a></h3>
+            <p>Connect with other event organizers and attendees in your area.</p>
               </div>
             </div>
           </div>
@@ -130,11 +130,11 @@
           <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
             <div class="services-item wow fadeInDown" data-wow-delay="1s">
               <div class="icon">
-                <i class="lni-user"></i>
+            <i class="lni-stats-up"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Global Event</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+            <h3><a href="#">Analytics & Insights</a></h3>
+            <p>Track your event performance with detailed analytics and reporting.</p>
               </div>
             </div>
           </div>
@@ -142,11 +142,11 @@
           <div class="col-md-6 col-lg-4 col-xs-12 padding-none">
             <div class="services-item wow fadeInDown" data-wow-delay="1.2s">
               <div class="icon">
-                <i class="lni-bubble"></i>
+            <i class="lni-support"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Free Swags</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
+            <h3><a href="#">24/7 Support</a></h3>
+            <p>Get help whenever you need it with our dedicated support team.</p>
               </div>
             </div>
           </div>
@@ -154,7 +154,6 @@
       </div>
     </section>
     <!-- Services Section End -->
-    
 
     <!-- About Section Start -->
     <section id="about" class="section-padding">
@@ -162,39 +161,39 @@
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">About This Events</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">About Our Platform</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">Your One-Stop Solution for Event Management</p>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="about-item">
-              <img class="img-fluid" src="assets/img/about/img1.jpg" alt="">
+          <img class="img-fluid" src="assets/img/about/img1.jpg" alt="For Attendees">
               <div class="about-text">
-                <h3><a href="#">Wanna Know Our Mission?</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
-                <a class="btn btn-common btn-rm" href="#">Read More</a>
+            <h3><a href="#">For Event Attendees</a></h3>
+            <p>Discover and attend amazing events in your area. From conferences to workshops, find experiences that match your interests.</p>
+            <a class="btn btn-common btn-rm" href="{{ route('events.index') }}">Find Events</a>
               </div>
             </div>
           </div>
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="about-item">
-              <img class="img-fluid" src="assets/img/about/img2.jpg" alt="">
+          <img class="img-fluid" src="assets/img/about/img2.jpg" alt="For Organizers">
               <div class="about-text">
-                <h3><a href="#">What you will learn?</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
-                <a class="btn btn-common btn-rm" href="#">Read More</a>
+            <h3><a href="#">For Event Organizers</a></h3>
+            <p>Create and manage successful events with our powerful tools. Reach your target audience and grow your community.</p>
+            <a class="btn btn-common btn-rm" href="{{ route('organizer.dashboard') }}">Start Organizing</a>
               </div>
             </div>
           </div>
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="about-item">
-              <img class="img-fluid" src="assets/img/about/img3.jpg" alt="">
+          <img class="img-fluid" src="assets/img/about/img3.jpg" alt="Platform Benefits">
               <div class="about-text">
-                <h3><a href="#">What are the benifits?</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer commodo ligula eget dolor.</p>
-                <a class="btn btn-common btn-rm" href="#">Read More</a>
+            <h3><a href="#">Platform Benefits</a></h3>
+            <p>Enjoy secure payments, detailed analytics, marketing tools, and excellent support to make your events successful.</p>
+            <a class="btn btn-common btn-rm" href="{{ route('features') }}">Learn More</a>
               </div>
             </div>
           </div>
@@ -203,405 +202,46 @@
     </section>
     <!-- About Section End -->
 
-    <!-- Counter Area Start-->
+<!-- Counter Area Start -->
     <section class="counter-section section-padding">
       <div class="container">
         <div class="row">
           <!-- Counter Item -->
           <div class="col-md-6 col-lg-3 col-xs-12 work-counter-widget text-center">
             <div class="counter wow fadeInRight" data-wow-delay="0.3s">
-              <div class="icon"><i class="lni-map"></i></div>
-              <p>Wst. Conference Center</p>
-              <span>San Francisco, CA</span>
+          <div class="icon"><i class="lni-calendar"></i></div>
+          <p>{{ $totalEvents }} Events</p>
+          <span>Created on our platform</span>
             </div>
           </div>
           <!-- Counter Item -->
           <div class="col-md-6 col-lg-3 col-xs-12 work-counter-widget text-center">
             <div class="counter wow fadeInRight" data-wow-delay="0.6s">
-              <div class="icon"><i class="lni-timer"></i></div>
-              <p>February 14 - 19, 2018</p>
-              <span>09:00 AM – 05:00 PM</span>
+          <div class="icon"><i class="lni-users"></i></div>
+          <p>{{ $totalOrganizers }} Organizers</p>
+          <span>Trust our platform</span>
             </div>
           </div>
           <!-- Counter Item -->
           <div class="col-md-6 col-lg-3 col-xs-12 work-counter-widget text-center">
             <div class="counter wow fadeInRight" data-wow-delay="0.9s">
-              <div class="icon"><i class="lni-users"></i></div>
-              <p>343 Available Seats</p>       
-              <span>Hurryup! few tickets are left</span>
+          <div class="icon"><i class="lni-ticket"></i></div>
+          <p>{{ $totalBookings }} Bookings</p>
+          <span>Successfully completed</span>
             </div>
           </div>
           <!-- Counter Item -->
           <div class="col-md-6 col-lg-3 col-xs-12 work-counter-widget text-center">
             <div class="counter wow fadeInRight" data-wow-delay="1.2s">
-              <div class="icon"><i class="lni-coffee-cup"></i></div>
-              <p>Free Lunch & Snacks</p>
-              <span>Don’t miss it</span>
+          <div class="icon"><i class="lni-map"></i></div>
+          <p>{{ $totalLocations }} Locations</p>
+          <span>Across the country</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Counter Area End-->
-
-    <!-- Schedule Section Start -->
-    <section id="schedules" class="schedule section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Event Schedules</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Lorem ipsum dolor sit amet, consectetur adipiscing <br> elit, sed do eiusmod tempor</p>
-            </div>
-          </div>
-        </div>
-        <div class="schedule-area row wow fadeInDown" data-wow-delay="0.3s">
-          <div class="schedule-tab-title col-md-3 col-lg-3 col-xs-12">
-            <div class="table-responsive">
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="monday-tab" data-toggle="tab" href="#monday" role="tab" aria-controls="monday" aria-expanded="true">
-                    <div class="item-text">
-                      <h4>Monday</h4>
-                      <h5>14 February</h5>
-                    </div>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="tuesday-tab" data-toggle="tab" href="#tuesday" role="tab" aria-controls="tuesday">
-                    <div class="item-text">
-                      <h4>Tuesday</h4>
-                      <h5>15 February</h5>
-                    </div>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#wednesday" role="tab" aria-controls="wednesday">
-                    <div class="item-text">
-                      <h4>Wednesday</h4>
-                      <h5>16 February</h5>
-                    </div>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="thursday-tab" data-toggle="tab" href="#thursday" role="tab" aria-controls="thursday">
-                    <div class="item-text">
-                      <h4>Thursday</h4>
-                      <h5>17 February</h5>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="schedule-tab-content col-md-9 col-lg-9 col-xs-12 clearfix">
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
-                <div id="accordion">
-                  <div class="card">
-                    <div id="headingOne">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-1.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingTwo">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-2.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>15 Free Productive Design Tools</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingThree">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-3.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Getting Started With SketchApp</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="tuesday" role="tabpanel" aria-labelledby="tuesday-tab">
-                <div id="accordion2">
-                  <div class="card">
-                    <div id="headingOne1">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-1.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseOne1" class="collapse show" aria-labelledby="headingOne1" data-parent="#accordion2">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingTwo2">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-2.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordion2">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="wednesday" role="tabpanel" aria-labelledby="wednesday-tab">
-                <div id="accordion3">
-                  <div class="card">
-                    <div id="headingOne3">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-1.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseOne3" class="collapse show" aria-labelledby="headingOne3" data-parent="#accordion3">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingTwo3">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo3">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-2.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo3" data-parent="#accordion3">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingThree3">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-3.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseThree3" class="collapse" aria-labelledby="headingThree3" data-parent="#accordion3">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="thursday" role="tabpanel" aria-labelledby="thursday-tab">
-                <div id="accordion4">
-                  <div class="card">
-                    <div id="headingOne">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne4" aria-expanded="false" aria-controls="collapseOne4">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-1.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseOne4" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion4">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingTwo">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseTwo4" aria-expanded="false" aria-controls="collapseTwo4">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-2.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion4">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingThree4">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-3.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseThree4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion4">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="friday" role="tabpanel" aria-labelledby="friday-tab">
-                <div id="accordion">
-                  <div class="card">
-                    <div id="headingOne">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-1.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingTwo">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-2.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div id="headingThree">
-                      <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <div class="images-box">
-                          <img class="img-fluid" src="assets/img/speaker/speakers-3.jpg" alt="">
-                        </div>                     
-                        <span class="time">10am - 12:30pm</span>
-                        <h4>Web Design Principles and Best Practices</h4>
-                        <h5 class="name">David Warner</h5>
-                      </div>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                      <div class="card-body">
-                        <p>Consectetur adipisicing elit. Quod distinctio impedit sint accusantium ducimus lites consequuntur innobisl dolores saepe.Proin sit amet turpis lobortis.</p>
-                        <div class="location">
-                          <span>Location:</span> Hall 1 , Building A, Golden Street, Southafrica
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Schedule Section End -->
+<!-- Counter Area End -->
 
     <!-- Team Section Start -->
     <section id="team" class="section-padding text-center">
@@ -609,260 +249,86 @@
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Who's Speaking?</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Featured Event Organizers</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">Meet Our Top Event Creators</p>
             </div>
           </div>
         </div>
         <div class="row">
+      @foreach($featuredOrganizers as $organizer)
           <div class="col-sm-6 col-md-6 col-lg-4">
             <!-- Team Item Starts -->
             <div class="team-item wow fadeInUp" data-wow-delay="0.2s">
               <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/team-01.jpg" alt="">
+            <img class="img-fluid" src="{{ $organizer->profile_image }}" alt="{{ $organizer->name }}">
                 <div class="team-overlay">
                   <div class="overlay-social-icon text-center">
                     <ul class="social-icons">
-                      <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
+                  <li><a href="{{ $organizer->social_links['facebook'] ?? '#' }}"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
+                  <li><a href="{{ $organizer->social_links['twitter'] ?? '#' }}"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
+                  <li><a href="{{ $organizer->social_links['linkedin'] ?? '#' }}"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
                     </ul>
                   </div>
                 </div>
               </div>
               <div class="info-text">
-                <h3><a href="#">JONATHON DOE</a></h3>
-                <p>Product Designer, Tesla</p>
+            <h3><a href="{{ route('organizer.profile', $organizer->id) }}">{{ $organizer->name }}</a></h3>
+            <p>{{ $organizer->events_count }} Events Created</p>
               </div>
             </div>
             <!-- Team Item Ends -->
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="0.4s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/team-02.jpg" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                    </ul>
+      @endforeach
                   </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3><a href="#">Patric Green</a></h3>
-                <p>Front-end Developer, Dropbox</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-
-          <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="0.6s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/team-03.jpg" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3><a href="#">Paul Kowalsy</a></h3>
-                <p>Lead Designer, TNW</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-
-          <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="0.8s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/team-04.jpg" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3><a href="#">Jhon Doe</a></h3>
-                <p>Back-end Developer, ASUS</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="1s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/team-05.jpg" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3><a href="#">Daryl Dixon</a></h3>
-                <p>Full-stack Developer, Google</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-4">
-            <!-- Team Item Starts -->
-            <div class="team-item wow fadeInUp" data-wow-delay="1.2s">
-              <div class="team-img">
-                <img class="img-fluid" src="assets/img/team/team-06.jpg" alt="">
-                <div class="team-overlay">
-                  <div class="overlay-social-icon text-center">
-                    <ul class="social-icons">
-                      <li><a href="#"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-linkedin-filled" aria-hidden="true"></i></a></li>
-                      <li><a href="#"><i class="lni-behance" aria-hidden="true"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="info-text">
-                <h3><a href="#">Chris Adams</a></h3>
-                <p>UI Designer, Apple</p>
-              </div>
-            </div>
-            <!-- Team Item Ends -->
-          </div>
-        </div>
-        <a href="speakers.html" class="btn btn-common mt-30 wow fadeInUp" data-wow-delay="1.9s">All Speakers</a>
+    <a href="{{ route('organizers.index') }}" class="btn btn-common mt-30 wow fadeInUp" data-wow-delay="1.9s">View All Organizers</a>
       </div>
     </section>
     <!-- Team Section End -->
 
-    <!-- Gallary Section Start -->
+<!-- Gallery Section Start -->
     <section id="gallery" class="section-padding">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">our event gallery</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Event Highlights</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">Moments from Our Recent Events</p>
             </div>
           </div> 
         </div>
         <div class="row">
+      @foreach($eventGallery as $photo)
           <div class="col-md-6 col-sm-6 col-lg-4">
             <div class="gallery-box">
               <div class="img-thumb">
-                <img class="img-fluid" src="assets/img/gallery/img-1.jpg" alt="">
+            <img class="img-fluid" src="{{ $photo->image_url }}" alt="{{ $photo->caption }}">
               </div>
               <div class="overlay-box text-center">
-                <a class="lightbox" href="assets/img/gallery/img-1.jpg">
+            <a class="lightbox" href="{{ $photo->image_url }}">
                   <i class="lni-plus"></i>
                 </a>
               </div>
             </div>
           </div>
-          <div class="ccol-md-6 col-sm-6 col-lg-4">
-            <div class="gallery-box">
-              <div class="img-thumb">
-                <img class="img-fluid" src="assets/img/gallery/img-2.jpg" alt="">
-              </div>
-              <div class="overlay-box text-center">
-                <a class="lightbox" href="assets/img/gallery/img-2.jpg">
-                  <i class="lni-plus"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="ccol-md-6 col-sm-6 col-lg-4">
-            <div class="gallery-box">
-              <div class="img-thumb">
-                <img class="img-fluid" src="assets/img/gallery/img-3.jpg" alt="">
-              </div>
-              <div class="overlay-box text-center">
-                <a class="lightbox" href="assets/img/gallery/img-3.jpg">
-                  <i class="lni-plus"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="ccol-md-6 col-sm-6 col-lg-4">
-            <div class="gallery-box">
-              <div class="img-thumb">
-                <img class="img-fluid" src="assets/img/gallery/img-4.jpg" alt="">
-              </div>
-              <div class="overlay-box text-center">
-                <a class="lightbox" href="assets/img/gallery/img-4.jpg">
-                  <i class="lni-plus"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="ccol-md-6 col-sm-6 col-lg-4">
-            <div class="gallery-box">
-              <div class="img-thumb">
-                <img class="img-fluid" src="assets/img/gallery/img-5.jpg" alt="">
-              </div>
-              <div class="overlay-box text-center">
-                <a class="lightbox" href="assets/img/gallery/img-5.jpg">
-                  <i class="lni-plus"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="ccol-md-6 col-sm-6 col-lg-4">
-            <div class="gallery-box">
-              <div class="img-thumb">
-                <img class="img-fluid" src="assets/img/gallery/img-6.jpg" alt="">
-              </div>
-              <div class="overlay-box text-center">
-                <a class="lightbox" href="assets/img/gallery/img-6.jpg">
-                  <i class="lni-plus"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+      @endforeach
         </div>
         <div class="row justify-content-center mt-3">
           <div class="col-xs-12">
-            <a href="#" class="btn btn-common">Browse All</a>
+        <a href="{{ route('gallery.index') }}" class="btn btn-common">View All Photos</a>
           </div>
         </div>
       </div>
     </section>
-    <!-- Gallary Section End -->
+<!-- Gallery Section End -->
 
-    <!-- Ask Question Section Start -->
+<!-- FAQ Section Start -->
     <section id="faq" class="section-padding">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Ask Question?</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Frequently Asked Questions</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">Everything You Need to Know About Our Platform</p>
             </div>
           </div>
         </div>
@@ -871,49 +337,25 @@
             <div class="accordion">
               <div class="card">
                 <div class="card-header" id="headingOne">
-                  <div class="header-title" data-toggle="collapse" data-target="#questionOne" aria-expanded="true" aria-controls="collapseOne">
-                    <i class="lni-pencil"></i> How to make a new event?
+              <div class="header-title" data-toggle="collapse" data-target="#questionOne" aria-expanded="true" aria-controls="questionOne">
+                <i class="lni-pencil"></i> How do I create an event?
                   </div>
                 </div>
                 <div id="questionOne" class="collapse" aria-labelledby="headingOne" data-parent="#question">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Creating an event is easy! Simply sign up as an organizer, click on "Create Event", and follow our step-by-step guide to set up your event details, tickets, and promotion.
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="card-header" id="headingTwo">
                     <div class="header-title" data-toggle="collapse" data-target="#questionTwo" aria-expanded="false" aria-controls="questionTwo">
-                      <i class="lni-pencil"></i>  Which payment methods do you accept? 
+                <i class="lni-credit-cards"></i> What payment methods do you accept?
                     </div>
                 </div>
                 <div id="questionTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#question">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <div class="header-title" data-toggle="collapse" data-target="#questionThree" aria-expanded="false" aria-controls="questionThree">
-                    <i class="lni-pencil"></i>  Which document can i bring to meeting?   
-                  </div>
-                </div>
-                <div id="questionThree" class="collapse" aria-labelledby="headingThree" data-parent="#question">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <div class="header-title" data-toggle="collapse" data-target="#questionFour" aria-expanded="false" aria-controls="questionFour">
-                   <i class="lni-pencil"></i> Who can join at the live event venue?
-                  </div>
-                </div>
-                <div id="questionFour" class="collapse" aria-labelledby="headingThree" data-parent="#question">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                We accept all major credit cards, debit cards, and digital payment methods including PayPal, Apple Pay, and Google Pay.
                   </div>
                 </div>
               </div>
@@ -922,50 +364,26 @@
           <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12">
             <div class="accordion">
               <div class="card">
-                <div class="card-header" id="headingOne2">
-                  <div class="header-title" data-toggle="collapse" data-target="#questionOne2" aria-expanded="true" aria-controls="collapseOne">
-                    <i class="lni-pencil"></i> How to make a new event?
-                  </div>
-                </div>
-                <div id="questionOne2" class="collapse" aria-labelledby="headingOne" data-parent="#question">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingTwo2">
-                    <div class="header-title" data-toggle="collapse" data-target="#questionTwo2" aria-expanded="false" aria-controls="questionTwo">
-                      <i class="lni-pencil"></i>  Which payment methods do you accept? 
-                    </div>
-                </div>
-                <div id="questionTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#question">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  </div>
-                </div>
-              </div>
-              <div class="card">
                 <div class="card-header" id="headingThree">
-                  <div class="header-title" data-toggle="collapse" data-target="#questionFive" aria-expanded="false" aria-controls="questionFive">
-                    <i class="lni-pencil"></i>How to set price? 
+              <div class="header-title" data-toggle="collapse" data-target="#questionThree" aria-expanded="false" aria-controls="questionThree">
+                <i class="lni-ticket"></i> How do I manage my bookings?
                   </div>
                 </div>
-                <div id="questionFive" class="collapse" aria-labelledby="headingThree" data-parent="#question">
+            <div id="questionThree" class="collapse" aria-labelledby="headingThree" data-parent="#question">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Access your bookings through your user dashboard. You can view event details, download tickets, and manage your registrations all in one place.
                   </div>
                 </div>
               </div>
               <div class="card">
-                <div class="card-header" id="headingThree">
-                  <div class="header-title" data-toggle="collapse" data-target="#questionSix" aria-expanded="false" aria-controls="questionSix">
-                    <i class="lni-pencil"></i>  What our price list? 
+            <div class="card-header" id="headingFour">
+              <div class="header-title" data-toggle="collapse" data-target="#questionFour" aria-expanded="false" aria-controls="questionFour">
+                <i class="lni-reload"></i> What is your refund policy?
                   </div>
                 </div>
-                <div id="questionSix" class="collapse" aria-labelledby="headingThree" data-parent="#question">
+            <div id="questionFour" class="collapse" aria-labelledby="headingFour" data-parent="#question">
                   <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                Refund policies vary by event. Each event listing includes specific refund terms set by the organizer. Generally, refunds are available up to 24 hours before the event.
                   </div>
                 </div>
               </div>
@@ -974,56 +392,16 @@
         </div>
       </div>
     </section>
-    <!-- Ask Question Section End -->
+<!-- FAQ Section End -->
 
-    <!-- Sponsors Section Start -->
-    <section id="sponsors" class="section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Sponsores</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
-            </div>
-          </div>
-        </div>
-        <div class="row mb-30 text-center wow fadeInDown" data-wow-delay="0.3s">
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="spnsors-logo">
-              <a href="#"><img class="img-fluid" src="assets/img/sponsors/logo-01.png" alt=""></a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="spnsors-logo">
-              <a href="#"><img class="img-fluid" src="assets/img/sponsors/logo-02.png" alt=""></a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="spnsors-logo">
-              <a href="#"><img class="img-fluid" src="assets/img/sponsors/logo-03.png" alt=""></a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="spnsors-logo">
-              <a href="#"><img class="img-fluid" src="assets/img/sponsors/logo-04.png" alt=""></a>
-            </div>
-          </div>
-          <div class="col-12 text-center">
-            <a href="#" class="btn btn-common">become a sponsor</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Sponsors Section End -->
-
-    <!-- Ticket Pricing Area Start -->
+<!-- Pricing Section Start -->
     <section id="pricing" class="section-padding">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Our Pricing</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Organizer Plans</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">Choose the Perfect Plan for Your Events</p>
             </div>
           </div>
         </div>
@@ -1031,113 +409,110 @@
           <div class="col-lg-4 col-sm-6 col-xa-12 mb-3">
             <div class="price-block-wrapper wow fadeInLeft" data-wow-delay="0.2s">
               <div class="icon">
-                <i class="lni-write"></i>
+            <i class="lni-package"></i>
               </div>
               <div class="colmun-title">
-                <h5>Basic Pass</h5>
+            <h5>Basic Plan</h5>
               </div>
               <div class="price">
-                <h2>$29</h2>
-                <p>452 Tickets Available</p>
+            <h2>Free</h2>
+            <p>Perfect for Getting Started</p>
               </div>
               <div class="pricing-list">
                 <ul>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Entrance</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Coffee Break</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Lunch on all days</span></li>
-                  <li><i class="lni-close"></i><span class="text">Access to all areas</span></li>
-                  <li><i class="lni-close"></i><span class="text">Certificate</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Workshop</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Create up to 2 events</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Basic Analytics</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Email Support</span></li>
+              <li><i class="lni-close"></i><span class="text">Custom Branding</span></li>
+              <li><i class="lni-close"></i><span class="text">Priority Support</span></li>
                 </ul>
               </div>
-              <a href="#" class="btn btn-common">Buy Ticket</a>
+          <a href="{{ route('organizer.register') }}" class="btn btn-common">Get Started</a>
             </div>
           </div>
           <div class="col-lg-4 col-sm-6 col-xa-12 mb-3">
             <div class="price-block-wrapper wow fadeInUp" data-wow-delay="0.3s">
               <div class="icon">
-                <i class="lni-layers"></i>
+            <i class="lni-star"></i>
               </div>
               <div class="colmun-title">
-                <h5>Standard Pass</h5>
+            <h5>Professional</h5>
               </div>
               <div class="price">
-                <h2>$40</h2>
-                <p>452 Tickets Available</p>
+            <h2>$29/mo</h2>
+            <p>For Growing Organizations</p>
               </div>
               <div class="pricing-list">
                 <ul>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Entrance</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Coffee Break</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Lunch on all days</span></li>
-                  <li><i class="lni-close"></i><span class="text">Access to all areas</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Certificate</span></li>
-                  <li><i class="lni-close"></i><span class="text">Workshop</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Unlimited Events</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Advanced Analytics</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Priority Support</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Custom Branding</span></li>
+              <li><i class="lni-close"></i><span class="text">API Access</span></li>
                 </ul>
               </div>
-              <a href="#" class="btn btn-common">Buy Ticket</a>
+          <a href="{{ route('plans.professional') }}" class="btn btn-common">Upgrade Now</a>
             </div>
           </div>
           <div class="col-lg-4 col-sm-6 col-xa-12 mb-3">
             <div class="price-block-wrapper wow fadeInRight" data-wow-delay="0.4s">
               <div class="icon">
-                <i class="lni-leaf"></i>
+            <i class="lni-diamond"></i>
               </div>
               <div class="colmun-title">
-                <h5>Premium Pass</h5>
+            <h5>Enterprise</h5>
               </div>
               <div class="price">
-                <h2>$68</h2>
-                <p>452 Tickets Available</p>
+            <h2>$99/mo</h2>
+            <p>For Large Organizations</p>
               </div>
               <div class="pricing-list">
                 <ul>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Entrance</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Coffee Break</span></li>
-                  <li><i class="lni-close"></i><span class="text">Lunch on all days</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Access to all areas</span></li>
-                  <li><i class="lni-check-mark-circle"></i><span class="text">Certificate</span></li>
-                  <li><i class="lni-close"></i><span class="text">Workshop</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Everything in Professional</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">API Access</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Dedicated Account Manager</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">Custom Integration</span></li>
+              <li><i class="lni-check-mark-circle"></i><span class="text">24/7 Phone Support</span></li>
                 </ul>
               </div>
-              <a href="#" class="btn btn-common">Buy Ticket</a>
+          <a href="{{ route('plans.enterprise') }}" class="btn btn-common">Contact Sales</a>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Ticket Pricing Area End -->
+<!-- Pricing Section End -->
 
-    <!-- Event Slides Section Start -->
-    <section id="event-slides" class="section-padding">
+<!-- Event Guidelines Section Start -->
+<section id="event-guidelines" class="section-padding">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Event Guideline</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Event Guidelines</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">How to Make Your Event Successful</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-6 col-xs-12 wow fadeInRight" data-wow-delay="0.3s">
             <div class="video">
-              <img class="img-fluid" src="assets/img/about/about.jpg" alt="">
+          <img class="img-fluid" src="assets/img/about/event-guide.jpg" alt="Event Guidelines">
             </div>
           </div>
           <div class="col-md-6 col-lg-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.3s">
-            <p class="intro-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
-            </p>
-            <h2 class="intro-title">Check List</h2>
+        <p class="intro-desc">Follow our comprehensive guide to create successful events that attendees will love and remember.</p>
+        <h2 class="intro-title">Event Success Checklist</h2>
             <ul class="list-specification">
-              <li><i class="lni-check-mark-circle"></i> Lorem Ipsum is simply dummy</li>
-              <li><i class="lni-check-mark-circle"></i> Ipsum passages, and more recently</li>
-              <li><i class="lni-check-mark-circle"></i> PageMaker including versions</li>
-              <li><i class="lni-check-mark-circle"></i> Lorem Ipsum is simply dummy</li> 
+          <li><i class="lni-check-mark-circle"></i> Define your target audience clearly</li>
+          <li><i class="lni-check-mark-circle"></i> Choose the right venue and date</li>
+          <li><i class="lni-check-mark-circle"></i> Set up proper event marketing</li>
+          <li><i class="lni-check-mark-circle"></i> Engage with your attendees</li>
+          <li><i class="lni-check-mark-circle"></i> Collect and act on feedback</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
-    <!-- Event Slides Section End -->
+<!-- Event Guidelines Section End -->
 
     <!-- Blog Section Start -->
     <section id="blog" class="section-padding">
@@ -1145,80 +520,41 @@
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Our Latest News & Articles</h1>
-              <p class="wow fadeInDown" data-wow-delay="0.2s">Global Grand Event on Digital Design</p>
+          <h1 class="section-title wow fadeInUp" data-wow-delay="0.2s">Latest Event News & Tips</h1>
+          <p class="wow fadeInDown" data-wow-delay="0.2s">Stay Updated with Event Planning Insights</p>
             </div>
           </div>
+              </div>
+    <div class="row">
+      @foreach($latestPosts as $post)
           <div class="col-lg-4 col-md-6 col-xs-12">
             <div class="blog-item">
               <div class="blog-image">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/blog/img-1.jpg" alt="">
+            <a href="{{ route('blog.show', $post->slug) }}">
+              <img class="img-fluid" src="{{ $post->featured_image }}" alt="{{ $post->title }}">
                 </a>
               </div>
               <div class="descr">
-                <div class="tag">Design</div>
+            <div class="tag">{{ $post->category }}</div>
                 <h3 class="title">
-                  <a href="single-blog.html">
-                    The 9 Design Trends You Need to Know
+              <a href="{{ route('blog.show', $post->slug) }}">
+                {{ $post->title }}
                   </a>
                 </h3>
                 <div class="meta-tags">
-                  <span class="date">Jan 20, 2018</span>
-                  <span class="comments">| <a href="#"> by Cindy Jefferson</a></span>
+              <span class="date">{{ $post->created_at->format('M d, Y') }}</span>
+              <span class="comments">| <a href="#"> by {{ $post->author }}</a></span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="blog-item">
-              <div class="blog-image">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/blog/img-2.jpg" alt="">
-                </a>
-              </div>
-              <div class="descr">
-                <div class="tag">Design</div>
-                <h3 class="title">
-                  <a href="single-blog.html">
-                    The 9 Design Trends You Need to Know
-                  </a>
-                </h3>
-                <div class="meta-tags">
-                  <span class="date">Jan 20, 2018 </span>
-                  <span class="comments">| <a href="#"> by Cindy Jefferson</a></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="blog-item">
-              <div class="blog-image">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/blog/img-3.jpg" alt="">
-                </a>
-              </div>
-              <div class="descr">
-                <div class="tag">Design</div>
-                <h3 class="title">
-                  <a href="single-blog.html">
-                    The 9 Design Trends You Need to Know
-                  </a>
-                </h3>
-                <div class="meta-tags">
-                  <span class="date">Jan 20, 2018</span> 
-                  <span class="comments">| <a href="#"> by Cindy Jefferson</a></span>
-                </div>
-              </div>
-            </div>
+      @endforeach
           </div>
           <div class="col-12 text-center">
-            <a href="#" class="btn btn-common">Read More News</a>
-          </div>
+      <a href="{{ route('blog.index') }}" class="btn btn-common">Read More Articles</a>
         </div>
       </div>
     </section>
-    
     <!-- Blog Section End -->
 
 @endsection

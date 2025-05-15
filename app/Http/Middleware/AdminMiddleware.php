@@ -16,9 +16,16 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ( Auth::user()->role !== 'moderator' && Auth::user()->role !== 'admin' ){
-            abort(403,'Accès intedit');
+        // Vérifier si l'utilisateur est authentifié
+        if (!Auth::check()) {
+            abort(403, 'Accès interdit');
         }
+
+        // Vérifier si l'utilisateur a le rôle 'admin' ou 'moderator'
+        if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'moderator') {
+            abort(403, 'Accès interdit');
+        }
+
         return $next($request);
     }
 }
