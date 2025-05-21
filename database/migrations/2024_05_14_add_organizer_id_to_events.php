@@ -9,15 +9,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->foreignId('created_by')->after('is_active')->constrained('users')->onDelete('cascade');
+            $table->foreignId('organizer_id')->nullable()->after('category_id')->constrained('users')->nullOnDelete();
         });
     }
 
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->dropForeign(['created_by']);
-            $table->dropColumn('created_by');
+            $table->dropForeign(['organizer_id']);
+            $table->dropColumn('organizer_id');
         });
     }
 }; 

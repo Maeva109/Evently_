@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Models\Event;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +39,9 @@ Route::get('/', function () {
 
 // Public Event Routes
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events/featured', [EventController::class, 'featured'])->name('events.featured');
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show');
 Route::get('/schedules', [EventController::class, 'schedules'])->name('events.schedules');
-Route::get('/events/featured', [EventController::class, 'featured'])->name('events.featured');
 
 // Protected Event Routes (require authentication)
 Route::middleware(['auth'])->group(function () {
@@ -50,7 +51,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update');
     Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
     Route::get('/events/{event}/book', [EventController::class, 'book'])->name('events.book');
+    Route::post('/events/{event}/book', [EventController::class, 'storeBooking'])->name('events.book.store');
     Route::get('/events/{event}/register', [EventController::class, 'register'])->name('events.register');
+    
+    // Booking routes
+    Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
 });
 
 // Organizer routes
@@ -95,8 +100,11 @@ Route::middleware('auth')->group(function () {
 });
 
 // Contact routes
-Route::post('/sendmessage', [ContactController::class, 'sendmessage']);
-Route::get('/contact', [ContactController::class, 'showForm']);
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact');
+Route::post('/contact/send', [ContactController::class, 'sendMessage'])->name('contact.send');
+
+// Newsletter route
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 // Admin routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
