@@ -306,9 +306,9 @@
                               </a>
                           </li>
                           <li class=" ">
-                              <a href="sample-page.html" class="waves-effect waves-dark">
+                              <a href="{{ route('event.index') }}" class="waves-effect waves-dark">
                                   <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                  <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Sample Page</span>
+                                  <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Events</span>
                                   <span class="pcoded-mcaret"></span>
                               </a>
                           </li>

@@ -7,7 +7,7 @@ body {
   background: #fff;
   font-size: 15px;
   font-weight: 400;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -95,15 +95,10 @@ ul li, ol li {
 }
 
 .section-title {
-  font-size: 36px;
-  color: #212121;
-  line-height: 52px;
-  padding-bottom: 20px;
+  font-size: 2.5rem;
   font-weight: 700;
-  text-align: center;
-  text-transform: uppercase;
-  position: relative;
-  margin-bottom: 15px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .section-title:before {
@@ -488,7 +483,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .section-padding {
-  padding: 60px 0;
+  padding: 80px 0;
 }
 
 .no-padding {
@@ -595,6 +590,14 @@ a.back-to-top:hover, a.back-to-top:focus {
 .navbar-brand {
   position: relative;
   padding: 0px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 40px;
+  color: #333;
+}
+
+.navbar-brand .text-primary {
+  color: #E91E63 !important;
 }
 
 .navbar-brand img {
@@ -692,7 +695,13 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 .navbar {
-  padding: 0;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar.navbar-expand-lg.fixed-top.scrolling-navbar {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar li.active a.nav-link {
@@ -1719,7 +1728,9 @@ a.back-to-top:hover, a.back-to-top:focus {
 
 /* Footer Area Start */
 .footer-area {
-  background: #222222;
+  background: #1a1b1f;
+  color: #fff;
+  padding: 80px 0 30px;
 }
 
 .footer-area h3 {
@@ -2216,4 +2227,14 @@ a.back-to-top:hover, a.back-to-top:focus {
   background: rgba(255, 255, 255, 0.2);
   color: #fff;
   border-color: #fff;
+}
+
+/* General Styles */
+.main-content {
+  padding-top: 80px; /* Account for fixed navbar */
+}
+
+/* Section Styles */
+.section-title-header {
+  margin-bottom: 60px;
 }

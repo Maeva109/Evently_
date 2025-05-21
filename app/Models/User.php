@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'status',
+        'phone',
+        'description',
+        'logo',
     ];
 
     /**
@@ -40,39 +46,58 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
+
+    // Relationships
     public function events()
     {
         return $this->hasMany(Event::class, 'created_by');
     }
 
-    // Relation : Un utilisateur peut effectuer plusieurs réservations
-    public function reservations()
+    public function bookings()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Booking::class);
     }
 
-    // Relation : Un utilisateur peut réaliser plusieurs paiements
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
-
-    // Relation : Un utilisateur peut laisser plusieurs avis
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 
-    // Relation : Un utilisateur peut recevoir plusieurs notifications
     public function notifications()
     {
         return $this->hasMany(Notification::class);
     }
 
-    // Relation : Un utilisateur peut générer plusieurs logs
     public function logs()
     {
         return $this->hasMany(Log::class);
+    }
+
+    // Helper methods
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isModerator()
+    {
+        return $this->role === 'moderator';
+    }
+
+    public function isOrganizer()
+    {
+        return $this->role === 'organizer';
+    }
+
+    public function isParticipant()
+    {
+        return $this->role === 'participant';
+    }
+
+    public function isActive()
+    {
+        return $this->status === 'active';
     }
 }

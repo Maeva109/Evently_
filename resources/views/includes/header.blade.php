@@ -26,8 +26,8 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#schedules">
-                  schedules
+                <a class="nav-link" href="{{ route('events.schedules') }}">
+                  Schedules
                 </a>
               </li>
               <li class="nav-item">
@@ -55,15 +55,15 @@
               <p> {{ auth()->user()->name }} </p>
             </li>
             <li class="nav-item">
-              <a href="/logout" class="nav-link fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Se Deconnecter</a>
+              <a href="/logout" class="nav-link fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Logout</a>
             </li>
                 @else
               
               <li class="nav-item">
-                <a href="/signin" class="nav-link fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Se connecter</a>
+                <a href="/signin" class="nav-link fadeInUp wow btn btn-border btn-lg" data-wow-delay=".8s">Login</a>
               </li>
               <li class="nav-item">
-                <a href="/signup" class="nav-link fadeInUp btn btn-border btn-lg" data-wow-delay=".8s">S'inscrire</a>
+                <a href="/signup" class="nav-link fadeInUp btn btn-border btn-lg" data-wow-delay=".8s">Signin</a>
               </li>
               @endauth
             </ul>
@@ -79,7 +79,7 @@
             <a class="page-scrool" href="#about">About</a>
           </li>
           <li>
-             <a class="page-scroll" href="#schedules">schedules</a>
+             <a class="page-scroll" href="{{ route('events.schedules') }}">Schedules</a>
           </li>
           <li>
             <a class="page-scroll" href="#team">Speakers</a>

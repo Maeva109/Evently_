@@ -14,15 +14,16 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->string('location');
-            $table->enum('event_type', ['presentiel', 'online']);
-            $table->enum('payment_type', ['free', 'paid']);
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->dateTime('end_date')->nullable();
+            $table->string('location')->nullable();
+            $table->string('image')->nullable();
+            $table->decimal('price', 10, 2)->nullable();
+            $table->boolean('is_published')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['draft', 'published', 'deactivated']);
             $table->timestamps();
         });
     }

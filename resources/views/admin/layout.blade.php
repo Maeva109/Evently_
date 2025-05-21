@@ -22,16 +22,14 @@
     <link rel="icon" href="{{asset('assets/admin/images/favicon.ico')}}" type="image/x-icon">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- waves.css -->
     <link rel="stylesheet" href="{{asset('assets/admin/pages/waves/css/waves.min.css')}}" type="text/css" media="all">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/bootstrap/css/bootstrap.min.css')}}">
-    <!-- waves.css -->
-    <link rel="stylesheet" href="{{asset('assets/admin/pages/waves/css/waves.min.css')}}" type="text/css" media="all">
     <!-- themify icon -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/icon/themify-icons/themify-icons.css')}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/icon/font-awesome/css/font-awesome.min.css')}}">
     <!-- scrollbar.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/jquery.mCustomScrollbar.css')}}">
     <!-- am chart export.css -->
@@ -40,12 +38,12 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin/css/style.css')}}">
     <!-- Toastr CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
-<!-- jQuery (nécessaire pour toastr) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Toastr JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- jQuery (nécessaire pour toastr) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 </head>
 
@@ -64,21 +62,7 @@
             "hideMethod": "fadeOut"
           };
       
-          @if(session('success'))
-            toastr.success("{{ session('success') }}");
-          @endif
-      
-          @if(session('error'))
-            toastr.error("{{ session('error') }}");
-          @endif
-      
-          @if(session('info'))
-            toastr.info("{{ session('info') }}");
-          @endif
-      
-          @if(session('warning'))
-            toastr.warning("{{ session('warning') }}");
-          @endif
+
         });
       </script>
       

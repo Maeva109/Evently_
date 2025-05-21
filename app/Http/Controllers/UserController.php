@@ -6,78 +6,98 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 use function Ramsey\Uuid\v1;
 
 class UserController extends Controller
 {
-    //
-  
-    public function login(Request $request)
-{
-    $credentials = $request->validate([
-        'email'    => ['required', 'email'],
-        'password' => ['required'],
-    ]);
-
-    if (Auth::attempt($credentials, $request->rememberme)) {
-        $request->session()->regenerate();
-
-        // Vérifier le rôle de l'utilisateur connecté
-        if (Auth::user()->role === 'participant') {
-            return redirect('/')->with('success', "Connexion réussie");
-        } elseif (Auth::user()->role === 'moderator') {
-            return redirect('/admin')->with('success', "Connexion réussie");
-        } elseif(Auth::user()->role === 'admin'){
-            return redirect('/admin')->with('success', "Connexion réussie");
-        }else {
-            // Pour les autres rôles, rediriger vers la page d'accueil par défaut
-            return redirect('/')->with('success', "Connexion réussie");
-        }
+    public function showLoginForm()
+    {
+        return view('login');
     }
 
-    return back()->withErrors([
-        'email' => 'Les informations fournies ne correspondent pas à nos enregistrements.',
-    ])->onlyInput('email');
-}
+    public function showRegistrationForm()
+    {
+        return view('register');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            $request->session()->regenerate();
+
+            // Check user role and redirect accordingly
+            $user = Auth::user();
+            if ($user->role === 'admin' || $user->role === 'moderator') {
+                return redirect()->intended('/admin')->with('success', 'Welcome back!');
+            }
+            
+            return redirect()->intended('/')->with('success', 'Welcome back!');
+        }
+
+        return back()
+            ->withInput($request->only('email'))
+            ->withErrors([
+                'email' => 'These credentials do not match our records.',
+            ]);
+    }
 
     public function register(Request $request)
-{
-    $validated = $request->validate([
-        'name'     => 'required|string|min:6|max:255',
-        'email'    => 'required|email|string|unique:users,email',
-        'password' => 'required|string|min:8|confirmed',
-        'role'     => 'required|in:moderator,participant',
-        'status'   => 'required|in:active,inactive',
-    ]);
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|min:3|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'role' => 'required|in:moderator,participant',
+        ]);
 
-    // Hacher le mot de passe avant de l'enregistrer
-    $validated['password'] = Hash::make($validated['password']);
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role' => $validated['role'],
+            'status' => 'active',
+        ]);
 
-    User::create($validated);
+        Auth::login($user);
 
-
-    return redirect('/')
-           ->with("success", "L'utilisateur " . $request->name . " a été créé avec succès");
-}
-    public function signin(){
-        // login code here
-        return view('signin');
-        
+        return redirect('/')
+            ->with('success', 'Welcome to Evently! Your account has been created successfully.');
     }
-    public function signup(){
-        // singup code here
-        return view('login');
-        
-    }
+
     public function logout(Request $request)
-{
-    Auth::logout();
- 
-    $request->session()->invalidate();
- 
-    $request->session()->regenerateToken();
- 
-    return redirect('/');
-}
+    {
+        Auth::logout();
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        return redirect('/')->with('success', 'You have been logged out successfully.');
+    }
+
+    public function showResetForm()
+    {
+        return view('auth.passwords.email');
+    }
+
+    public function sendResetLink(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    }
 }
